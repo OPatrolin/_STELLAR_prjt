@@ -58,7 +58,7 @@ public class Chara_Cntrl : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-      
+
     }
 
 
@@ -85,7 +85,7 @@ public class Chara_Cntrl : MonoBehaviour
 
         rb.linearVelocity = v;
 
-     
+
 
 
     }
@@ -93,6 +93,18 @@ public class Chara_Cntrl : MonoBehaviour
 
 
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log(col.gameObject.name);
+
+        //if (collision.gameObject.tag.Contains("placement"))
+        if (col.gameObject.tag == "placement")
+        {
+            
+            Debug.Log("contact");
+            // collision.gameObject.tag.//afficher ui proposer interaction
+
+        }
 
 
 
@@ -101,5 +113,5 @@ public class Chara_Cntrl : MonoBehaviour
 
 
 
-
+    }
 }
