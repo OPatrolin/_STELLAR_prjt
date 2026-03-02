@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 public class Chara_Cntrl : MonoBehaviour
 
 
@@ -51,11 +52,13 @@ public class Chara_Cntrl : MonoBehaviour
 
     Rigidbody2D rb;
     float inputX;
+    float nSizeRay = 0f;
     public LayerMask groundLayer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+      
     }
 
 
@@ -70,19 +73,7 @@ public class Chara_Cntrl : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
-            /*if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * holdTime);
-
-
-
-            }
-            */
-
         }
-
-
-
 
 
     }
@@ -94,6 +85,7 @@ public class Chara_Cntrl : MonoBehaviour
 
         rb.linearVelocity = v;
 
+     
 
 
     }
