@@ -14,6 +14,7 @@ public class NPCsett : MonoBehaviour
 
     void Update()
     {
+        //gravite sol
         bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
 
     }

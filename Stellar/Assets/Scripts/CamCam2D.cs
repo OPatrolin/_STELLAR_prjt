@@ -15,6 +15,7 @@ public class CamCam2D : MonoBehaviour
 
     private void Update()
     {
+        // provisoire se rapprocher ( pour interagir)
         if (Input.GetKeyDown(KeyCode.Y))
         {
             stateNear = true;
@@ -27,9 +28,9 @@ public class CamCam2D : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        // camera suiveuse
         if (target == null) return;
         {
         

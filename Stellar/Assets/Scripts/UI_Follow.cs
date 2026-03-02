@@ -8,13 +8,13 @@ public class UI_Follow : MonoBehaviour
     private RectTransform rectTransform = null;
     private Camera cam;
 
-    private void Start()
+     void Start()
     {
         cam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
     }
 
-    private void LateUpdate()
+     void LateUpdate()
     {
         if (!objectToFollow) return;
         rectTransform.position = RectTransformUtility.WorldToScreenPoint(cam, objectToFollow.position) + offset;

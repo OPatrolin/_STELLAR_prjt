@@ -66,6 +66,7 @@ public class Chara_Cntrl : MonoBehaviour
 
     void Update()
     {
+        //deplacement g & d + saut
         inputX = Input.GetAxisRaw("Horizontal");
 
         bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
@@ -75,13 +76,14 @@ public class Chara_Cntrl : MonoBehaviour
 
         }
 
-        transform.GetComponent<UI_Follow>().enabled = false;  ////////
+        //GetComponent<UI_Follow>().enabled = false;  ////////
 
     }
 
 
     void FixedUpdate()
     {
+       
         var v = rb.linearVelocity;
         v.x = inputX * moveSpeed;
 
@@ -97,6 +99,7 @@ public class Chara_Cntrl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        //contact NPC
         Debug.Log(col.gameObject.name);
 
         if (col.gameObject.tag == "placement")
@@ -104,7 +107,7 @@ public class Chara_Cntrl : MonoBehaviour
             
             Debug.Log("contact");
 
-            col.transform.GetComponent<UI_Follow>().enabled = true;  /////////
+            //col.GetComponent<UI_Follow>().enabled = true;  /////////
 
 
         }
