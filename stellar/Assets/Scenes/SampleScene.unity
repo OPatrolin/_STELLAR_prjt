@@ -989,7 +989,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4363639312543976892, guid: 38a5203084af63641b9307ae4e49a858, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8296997547128912314, guid: 38a5203084af63641b9307ae4e49a858, type: 3}
       propertyPath: m_Name
@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8296997547128912314, guid: 38a5203084af63641b9307ae4e49a858, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8562733214462221061, guid: 38a5203084af63641b9307ae4e49a858, type: 3}
       propertyPath: m_LocalPosition.x

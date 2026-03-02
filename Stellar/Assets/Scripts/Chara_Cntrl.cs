@@ -75,8 +75,10 @@ public class Chara_Cntrl : MonoBehaviour
 
         }
 
+        transform.GetComponent<UI_Follow>().enabled = false;  ////////
 
     }
+
 
     void FixedUpdate()
     {
@@ -97,12 +99,13 @@ public class Chara_Cntrl : MonoBehaviour
     {
         Debug.Log(col.gameObject.name);
 
-        //if (collision.gameObject.tag.Contains("placement"))
         if (col.gameObject.tag == "placement")
         {
             
             Debug.Log("contact");
-            // collision.gameObject.tag.//afficher ui proposer interaction
+
+            col.transform.GetComponent<UI_Follow>().enabled = true;  /////////
+
 
         }
 
