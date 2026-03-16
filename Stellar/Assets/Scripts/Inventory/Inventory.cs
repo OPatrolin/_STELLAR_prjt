@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.Windows;
+
 
 public class Inventory : MonoBehaviour
 {
@@ -13,8 +11,10 @@ public class Inventory : MonoBehaviour
 
     public GameObject hotbarObj;
     public GameObject inventorySlotParent;
+    public GameObject container;
 
-    public UnityEngine.UI.Image dragIcon;
+
+    public Image dragIcon;
 
     private List<Slot> inventorySlots = new List<Slot>();
     private List<Slot> hotbarSlots = new List<Slot>();
@@ -35,15 +35,22 @@ public class Inventory : MonoBehaviour
 
      void Update()
     {
-        if(UnityEngine.Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W))
         {
             AddItem(woodItem, 3);
         }
-        else if (UnityEngine.Input.GetKeyDown(KeyCode.G))
+        else if (Input.GetKeyDown(KeyCode.G))
         {
             AddItem(axeItem, 1);
         }
 
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            container.SetActive(!container.activeInHierarchy);
+            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = !Cursor.visible;
+
+        }
 
         StartDrag();
         UpdateDragItemPosition();
@@ -97,7 +104,7 @@ public class Inventory : MonoBehaviour
 
     private void StartDrag()
     {
-        if (UnityEngine.Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Slot hovered = GetHoveredSlot();
 
@@ -118,7 +125,7 @@ public class Inventory : MonoBehaviour
     {
         Slot hovered = GetHoveredSlot();
 
-        if(UnityEngine.Input.GetMouseButtonUp(0) && isDragging)
+        if(Input.GetMouseButtonUp(0) && isDragging)
         {
             Slot hoverd = GetHoveredSlot();
 
@@ -192,7 +199,7 @@ public class Inventory : MonoBehaviour
     {
       if(isDragging)
         {
-            dragIcon.transform.position = UnityEngine.Input.mousePosition;
+            dragIcon.transform.position = Input.mousePosition;
         }
     }
 
