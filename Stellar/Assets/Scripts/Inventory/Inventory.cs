@@ -16,6 +16,12 @@ public class Inventory : MonoBehaviour
 
     public Image dragIcon;
 
+    public float pickupRange = 3f;
+    private Item lookedAtItem = null;
+    public Material highlightMaterial;
+    private Material originalMaterial;
+    private Renderer lookedAtRenderer = null;
+
     private List<Slot> inventorySlots = new List<Slot>();
     private List<Slot> hotbarSlots = new List<Slot>();
     private List<Slot> allslots = new List<Slot>();
@@ -35,6 +41,7 @@ public class Inventory : MonoBehaviour
 
      void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.W))
         {
             AddItem(woodItem, 3);
@@ -43,6 +50,10 @@ public class Inventory : MonoBehaviour
         {
             AddItem(axeItem, 1);
         }
+        */
+
+
+
 
         if(Input.GetKeyDown(KeyCode.P))
         {
@@ -96,8 +107,6 @@ public class Inventory : MonoBehaviour
 
                 if (remanining <= 0) return;
             }
-
-           // if (remanining> 0) Debug.Log("Inventory is full, could not add " + remanining + " of " + itemtoAdd.ItemName);
         }
     }
 
@@ -203,7 +212,44 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Pickup()
+    {
+        if(lookedAtRenderer != null && Input.GetKeyDown(KeyCode.E))
+        {
+            Item item = lookedAtRenderer.GetComponent<Item>();
+            if(item != null)
+            {
+                AddItem(item.item, item.amount);
+                Destroy(item.gameObject);
+            }
+        }   
+    }
 
+    private void DetectLookedAtItem()
+    {
+        if(lookedAtRenderer != null)
+        {
+            lookedAtRenderer.material = originalMaterial;
+            lookedAtRenderer = null;
+            originalMaterial = null;
+        }
+
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        if(Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+        {
+            Item item = hit.collider.GetComponent<Item>();
+            if(item != null)
+            {
+                Renderer rend = item.GetComponent<Renderer>();
+                if(rend != null)
+                {
+                    originalMaterial = rend.material;
+                }
+                //5:43 video #3 inventory
+
+            }
+        }
+    }
 
 
 }
