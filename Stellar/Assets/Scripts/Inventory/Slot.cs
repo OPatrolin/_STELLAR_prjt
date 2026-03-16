@@ -105,4 +105,3 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 }
 
 
-//https://www.youtube.com/watch?v=PUKYv-afRnc  à 11:00 minutes
