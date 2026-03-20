@@ -53,8 +53,6 @@ public class Inventory : MonoBehaviour
         */
 
 
-
-
         if(Input.GetKeyDown(KeyCode.P))
         {
             container.SetActive(!container.activeInHierarchy);
@@ -63,11 +61,15 @@ public class Inventory : MonoBehaviour
 
         }
 
+        DetectLookedAtItem();
+        Pickup();
+
         StartDrag();
         UpdateDragItemPosition();
         EndDrag();
     }
 
+    
 
 
     public void AddItem(itemS0 itemtoAdd, int amount)
@@ -244,8 +246,10 @@ public class Inventory : MonoBehaviour
                 if(rend != null)
                 {
                     originalMaterial = rend.material;
+                    rend.material = highlightMaterial;
+                    lookedAtRenderer = rend;
                 }
-                //5:43 video #3 inventory
+               
 
             }
         }
