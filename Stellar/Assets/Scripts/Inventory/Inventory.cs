@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
     public Image dragIcon;
 
     public float pickupRange = 3f;
-    private Item lookedAtItem = null;
+    // private Item lookedAtItem = null;
     public Material highlightMaterial;
     private Material originalMaterial;
     private Renderer lookedAtRenderer = null;
@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
     private bool isDragging = false;
 
 
+    // Canva inventaire
      void Awake()
     {
         inventorySlots.AddRange(inventorySlotParent.GetComponentsInChildren<Slot>());
@@ -39,6 +40,9 @@ public class Inventory : MonoBehaviour
         allslots.AddRange(hotbarSlots);
     }
 
+
+    // test ajouter 
+    // METTRE SCIPT GRAB ICI
      void Update()
     {
         
@@ -56,12 +60,12 @@ public class Inventory : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             container.SetActive(!container.activeInHierarchy);
-            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = !Cursor.visible;
+            //Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+            //Cursor.visible = !Cursor.visible;
 
         }
 
-        DetectLookedAtItem();
+       
         Pickup();
 
         StartDrag();
@@ -71,7 +75,7 @@ public class Inventory : MonoBehaviour
 
     
 
-
+    // para inventaire
     public void AddItem(itemS0 itemtoAdd, int amount)
     {
         int remanining = amount;
@@ -112,7 +116,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
+    // deplacer les item debut
     private void StartDrag()
     {
         if (Input.GetMouseButtonDown(0))
@@ -132,6 +136,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // deplacer les item fin
     private void EndDrag()
     {
         Slot hovered = GetHoveredSlot();
@@ -165,7 +170,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-   
+   // para deplacement 
     private void HandleDrop(Slot from, Slot to)
     {
         if (from == to) return; 
@@ -206,6 +211,7 @@ public class Inventory : MonoBehaviour
         from.ClearSlot();
     }
 
+    // glissement item
     private void UpdateDragItemPosition()
     {
       if(isDragging)
@@ -214,6 +220,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // c'est quoi ça ?
     private void Pickup()
     {
         if(lookedAtRenderer != null && Input.GetKeyDown(KeyCode.E))
@@ -227,8 +234,11 @@ public class Inventory : MonoBehaviour
         }   
     }
 
-    private void DetectLookedAtItem()
+    // c'était ça là mais ça marche pas
+    // grab item 
+   /* private void DetectLookedAtItem()
     {
+        Debug.Log("ça marche cette connerie?");
         if(lookedAtRenderer != null)
         {
             lookedAtRenderer.material = originalMaterial;
@@ -254,6 +264,6 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
+   */
 
 }

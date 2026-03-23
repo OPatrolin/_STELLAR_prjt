@@ -105,10 +105,6 @@ public class Chara_Cntrl : MonoBehaviour
         if (col.gameObject.tag == "placement")
         {
             
-            Debug.Log("contact");
-
-            //col.GetComponent<UI_Follow>().enabled = true;  /////////
-
 
         }
 
