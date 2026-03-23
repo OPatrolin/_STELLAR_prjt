@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public itemS0 woodItem;  //test
     public itemS0 axeItem;   //test
 
+    public Camera cam;
 
     public GameObject hotbarObj;
     public GameObject inventorySlotParent;
@@ -46,7 +47,7 @@ public class Inventory : MonoBehaviour
      void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.W))
+       /* if(Input.GetKeyDown(KeyCode.W))
         {
             AddItem(woodItem, 3);
         }
@@ -54,6 +55,29 @@ public class Inventory : MonoBehaviour
         {
             AddItem(axeItem, 1);
         }
+        */
+       
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("test");
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
+
+            if (hit)
+            {
+                if (hit.collider.gameObject.GetComponent<Item>() != null)
+                {
+
+                    // WARNING PAS MODULAIRE
+                    //if (name.Contains wood )
+                            //AddItem(woodItem, 1);
+
+
+
+                }
+            }
+        }
+    
         
 
 
@@ -65,15 +89,12 @@ public class Inventory : MonoBehaviour
 
         }
 
-       
         Pickup();
-
         StartDrag();
         UpdateDragItemPosition();
         EndDrag();
     }
 
-    
 
     // para inventaire
     public void AddItem(itemS0 itemtoAdd, int amount)
@@ -96,8 +117,7 @@ public class Inventory : MonoBehaviour
                     remanining -= amountToAdd;
 
                     if (remanining <= 0) return;
-                }
-                    
+                }      
             }
         }
 
