@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
 
      void Update()
     {
-        /*
+        
         if(Input.GetKeyDown(KeyCode.W))
         {
             AddItem(woodItem, 3);
@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
         {
             AddItem(axeItem, 1);
         }
-        */
+        
 
 
         if(Input.GetKeyDown(KeyCode.P))
