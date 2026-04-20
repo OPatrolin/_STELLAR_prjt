@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
                         AddItem(myItem.item,myItem.amount);
 
 
-                    Destroy(hit.collider.gameObject);
+                        Destroy(hit.collider.gameObject);
 
                     }
                 }

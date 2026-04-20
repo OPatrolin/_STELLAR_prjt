@@ -20,3 +20,4 @@ public class UI_Follow : MonoBehaviour
         rectTransform.position = RectTransformUtility.WorldToScreenPoint(cam, objectToFollow.position) + offset;
     }
 }
+// wtf is that ?

@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class pausemenu : MonoBehaviour
 {
-    public GameObject container;
+    public GameObject contain;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            container.SetActive(true);
+            contain.SetActive(true);
     
         Time.timeScale = 0;
         }
@@ -18,7 +18,7 @@ public class pausemenu : MonoBehaviour
 
     public void ResumeButton()
     {
-        container.SetActive(false);
+        contain.SetActive(false);
         Time.timeScale = 1;
     }
 

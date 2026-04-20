@@ -16,9 +16,28 @@ public class CamCam2D : MonoBehaviour
     private void Update()
     {
         // provisoire se rapprocher ( pour interagir)
-        if (Input.GetKeyDown(KeyCode.Y))
+        //DOIT ETRE AUTOMATIQUE, ACTIVER QUAND ON CLIQUE ET S4EN ALLER  A LA FIN DE L'INTERACTION OU QUANDON VEUT(selon objet ou interaction)
+        //(meme pour interaction npc
+
+        //test
+       // if (Input.GetMouseButtonDown(0) && gameObject("NPC"))
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.Y))
         {
-            stateNear = true;
+             stateNear = true;
         }
 
         if (Input.GetKeyDown(KeyCode.U))
