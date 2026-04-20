@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +20,8 @@ public class Inventory : MonoBehaviour
     public Image dragIcon;
 
     public float pickupRange = 3f;
-    // private Item lookedAtItem = null;
-    public Material highlightMaterial;
-    private Material originalMaterial;
+    //public Material highlightMaterial;
+    //private Material originalMaterial;
     private Renderer lookedAtRenderer = null;
 
     private List<Slot> inventorySlots = new List<Slot>();
@@ -47,49 +48,38 @@ public class Inventory : MonoBehaviour
      void Update()
     {
         
-       /* if(Input.GetKeyDown(KeyCode.W))
-        {
-            AddItem(woodItem, 3);
-        }
-        else if (Input.GetKeyDown(KeyCode.G))
-        {
-            AddItem(axeItem, 1);
-        }
-        */
-       
-
-        if (Input.GetMouseButtonDown(0))
-        {
-           
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
-
-            if (hit)
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.gameObject.GetComponent<Item>() != null)
+                RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
+
+                if (hit)
                 {
+                    //detecte toucher avec objet ITEM (good)
+                    if (hit.collider.gameObject.GetComponent<Item>() != null)
+                    {
+                        //Debug.Log("TYTYTYTYTYT");
+                        Item myItem = hit.collider.gameObject.GetComponent<Item>();
+                        AddItem(myItem.item,myItem.amount);
 
-                    // WARNING PAS MODULAIRE
-                    //if (name.Contains wood )
-                            //AddItem(woodItem, 1);
 
+                    Destroy(hit.collider.gameObject);
 
-
+                    }
                 }
             }
-        }
-    
-        
 
 
+
+        // inventaire caché
         if(Input.GetKeyDown(KeyCode.P))
         {
             container.SetActive(!container.activeInHierarchy);
-            //Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
-            //Cursor.visible = !Cursor.visible;
+            
 
         }
 
         Pickup();
+
         StartDrag();
         UpdateDragItemPosition();
         EndDrag();
@@ -136,15 +126,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // deplacer les item debut
+    // deplacer les item (debut)
     private void StartDrag()
     {
+        
         if (Input.GetMouseButtonDown(0))
         {
+           
             Slot hovered = GetHoveredSlot();
 
             if (hovered != null && hovered.HasItem())
             {
+                Debug.Log("ujsedbgfjdbfvhj");
                 draggedSlot = hovered;
                 isDragging = true;
 
@@ -156,7 +149,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // deplacer les item fin
+    // deplacer les item (fin)
     private void EndDrag()
     {
         Slot hovered = GetHoveredSlot();
@@ -240,7 +233,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // c'est quoi ça ?
+   
     private void Pickup()
     {
         if(lookedAtRenderer != null && Input.GetKeyDown(KeyCode.E))
@@ -253,37 +246,5 @@ public class Inventory : MonoBehaviour
             }
         }   
     }
-
-    // c'était ça là mais ça marche pas
-    // grab item 
-   /* private void DetectLookedAtItem()
-    {
-        Debug.Log("ça marche cette connerie?");
-        if(lookedAtRenderer != null)
-        {
-            lookedAtRenderer.material = originalMaterial;
-            lookedAtRenderer = null;
-            originalMaterial = null;
-        }
-
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        if(Physics.Raycast(ray, out RaycastHit hit, pickupRange))
-        {
-            Item item = hit.collider.GetComponent<Item>();
-            if(item != null)
-            {
-                Renderer rend = item.GetComponent<Renderer>();
-                if(rend != null)
-                {
-                    originalMaterial = rend.material;
-                    rend.material = highlightMaterial;
-                    lookedAtRenderer = rend;
-                }
-               
-
-            }
-        }
-    }
-   */
 
 }

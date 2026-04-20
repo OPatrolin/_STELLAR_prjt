@@ -100,7 +100,7 @@ public class Chara_Cntrl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //contact NPC
-        Debug.Log(col.gameObject.name);
+       // Debug.Log(col.gameObject.name);
 
         if (col.gameObject.tag == "placement")
         {

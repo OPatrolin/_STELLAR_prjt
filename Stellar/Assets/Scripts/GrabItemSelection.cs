@@ -14,21 +14,23 @@ public class GrabItemSelection : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+  /*  void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
-
+         
             if (hit)
             {
-                Debug.Log("ContactItem");
+                  //detecte toucher avec objet ITEM (good)
                 if(hit.collider.gameObject.GetComponent<Item>() != null)
                 {
-                    //AddItem
-                    hit.transform.position += new Vector3(0f, 2f, 0f);
+                    Debug.Log("TYTYTYTYTYT");
+                    AddItem(Item),
+                   
                 }
             }
         }
     }
+  */
 }
