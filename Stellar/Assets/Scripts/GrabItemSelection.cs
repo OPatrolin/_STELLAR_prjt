@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class GrabItemSelection : MonoBehaviour
 {
     public Camera cam;
-    public itemS0 item;
+   // public itemS0 item;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +22,7 @@ public class GrabItemSelection : MonoBehaviour
 
             if (hit)
             {
+                Debug.Log("ContactItem");
                 if(hit.collider.gameObject.GetComponent<Item>() != null)
                 {
                     //AddItem

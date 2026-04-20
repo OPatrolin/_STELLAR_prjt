@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("test");
+           
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
 
             if (hit)

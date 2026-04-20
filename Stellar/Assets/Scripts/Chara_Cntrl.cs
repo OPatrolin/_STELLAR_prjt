@@ -45,14 +45,14 @@ public class Chara_Cntrl : MonoBehaviour
     [SerializeField] float acceleration = 20f;
 
     [Header("Gravity/Jump")]
-    [SerializeField] float gravity = -10f;
     [SerializeField] float jumpForce = 5f;
-    [SerializeField] float holdTime = 50f;
+    //[SerializeField] float gravity = -10f;
+    //[SerializeField] float holdTime = 50f;
 
 
     Rigidbody2D rb;
     float inputX;
-    float nSizeRay = 0f;
+   // float nSizeRay = 0f;
     public LayerMask groundLayer;
 
     void Awake()
