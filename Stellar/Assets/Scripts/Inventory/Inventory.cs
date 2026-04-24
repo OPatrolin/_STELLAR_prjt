@@ -134,10 +134,10 @@ public class Inventory : MonoBehaviour
         {
            
             Slot hovered = GetHoveredSlot();
+            Debug.Log(hovered);
 
             if (hovered != null && hovered.HasItem())
             {
-                Debug.Log("ujsedbgfjdbfvhj");
                 draggedSlot = hovered;
                 isDragging = true;
 
@@ -154,13 +154,16 @@ public class Inventory : MonoBehaviour
     {
         Slot hovered = GetHoveredSlot();
 
+        if (hovered) Debug.Log(hovered.myParent);
+
         if(Input.GetMouseButtonUp(0) && isDragging)
         {
+            Debug.Log("TEST");
             Slot hoverd = GetHoveredSlot();
 
-            if (hovered != null)
+            if (hoverd != null)
             {
-                HandleDrop(draggedSlot, hovered);
+                HandleDrop(draggedSlot, hoverd);
 
                 dragIcon.enabled = false;
 
@@ -173,10 +176,13 @@ public class Inventory : MonoBehaviour
 
     private Slot GetHoveredSlot()
     {
-        foreach(Slot s in allslots)
+        foreach (Slot s in allslots)
         {
+
             if (s.hovering)
-                return s;
+            { 
+            return s;
+             }
         }
 
         return null;

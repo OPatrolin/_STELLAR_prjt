@@ -14,12 +14,15 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Image iconImage;
     public TextMeshProUGUI amountTxt;
 
-
+    public GameObject myParent;
 
     private void Awake()
     {
         iconImage = transform.GetChild(0).GetComponent<Image>();
         amountTxt = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+        // InventorySlots && HotBarSlots
+        myParent = transform.parent.gameObject;
     }
 
     public itemS0 GetItem()

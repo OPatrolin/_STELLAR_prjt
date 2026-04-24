@@ -8,7 +8,7 @@ public class active_UI : MonoBehaviour
 
      void Start()
     {
-        myUI.SetActive(false);
+       // myUI.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D col)
