@@ -65,8 +65,6 @@ public class CamCam2D : MonoBehaviour
 
     void FixedUpdate()
     {
-
-
         if (target)
         {
             Vector3 targetPosition = target.position + offset;
@@ -75,7 +73,7 @@ public class CamCam2D : MonoBehaviour
 
             if (stopcam == false) transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
-
+        // FEATURE le player ne bouge plus non plus
 
 
 

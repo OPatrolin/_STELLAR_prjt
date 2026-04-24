@@ -1,45 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.X86;
+
+
+
 public class Chara_Cntrl : MonoBehaviour
-
-
 {
-    /* // V1 Code deplacement
-    [Header("Move variables")]
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float acceleration = 20f;
-
-    [Header("Gravity/Jump")]
-    [SerializeField] float gravity = -10f;
-    [SerializeField] float jumpHeight = 1.5f;
-
-    Rigidbody2D rb;
-    Vector2 MyInput;
-
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-
-
-    void Update()
-    {
-        MyInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        MyInput.Normalize();
-
-
-    }
-
-    void FixedUpdate()
-    {
-        rb.linearVelocity = MyInput * moveSpeed;
-    }
-    */
-
-
-
     [Header("Move variables")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float acceleration = 20f;
@@ -58,7 +24,6 @@ public class Chara_Cntrl : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
 
@@ -73,7 +38,6 @@ public class Chara_Cntrl : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
         }
 
         //GetComponent<UI_Follow>().enabled = false;  ////////
@@ -82,18 +46,12 @@ public class Chara_Cntrl : MonoBehaviour
 
 
     void FixedUpdate()
-    {
-       
+    {  
         var v = rb.linearVelocity;
         v.x = inputX * moveSpeed;
 
         rb.linearVelocity = v;
-
-
-
-
     }
-
 
 
 
@@ -104,16 +62,10 @@ public class Chara_Cntrl : MonoBehaviour
 
         if (col.gameObject.tag == "placement")
         {
-            
+          //  Setactive active ui proposition
+          // pas une lettre mais une fleche (animé serait le mieux)
 
         }
-
-
-
-
-
-
-
 
     }
 }
