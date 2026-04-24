@@ -6,6 +6,11 @@ public class pausemenu : MonoBehaviour
 {
     public GameObject contain;
 
+    private void Start()
+    {
+        contain.SetActive(false);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

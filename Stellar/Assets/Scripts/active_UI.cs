@@ -18,7 +18,7 @@ public class active_UI : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
          
-            myUI.SetActive(true);
+          //  myUI.SetActive(true);
 
         }
     }

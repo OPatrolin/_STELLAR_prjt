@@ -1,8 +1,11 @@
+using UnityEditor.Sprites;
 using UnityEngine;
 
 public class CamCam2D : MonoBehaviour
 {
+    public Camera cam;
 
+ 
     public Transform target;
     public float smoothTime = 0.2f;
     public Vector3 offset = new Vector3(0f, 0f, 0f);
@@ -12,52 +15,65 @@ public class CamCam2D : MonoBehaviour
     Vector3 velocity = Vector3.zero;
 
     bool stateNear = false;
+    bool stopcam = false;
+
+    // UI
+    public GameObject uiZoom;
+
+    private void Start()
+    {
+        uiZoom.SetActive(false);
+    }
 
     private void Update()
     {
-        // provisoire se rapprocher ( pour interagir)
-        //DOIT ETRE AUTOMATIQUE, ACTIVER QUAND ON CLIQUE ET S4EN ALLER  A LA FIN DE L'INTERACTION OU QUANDON VEUT(selon objet ou interaction)
-        //(meme pour interaction npc
+        //(meme pour interaction npc)
 
-        //test
-       // if (Input.GetMouseButtonDown(0) && gameObject("NPC"))
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-            if (Input.GetKeyDown(KeyCode.Y))
+        // zoom objet
+        if (Input.GetMouseButtonDown(0))
         {
-             stateNear = true;
-        }
+            Debug.Log("ici ça marche");
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
+         
+            if (hit)
+            {
+                if (hit.collider.gameObject.GetComponent<Meuble>() != null)
+                { 
+                    stateNear = true;
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            stateNear = false;
+                    if (stateNear == true)
+                    {
+                        uiZoom.SetActive(true);
+                        stopcam = true;
+                    }
+                }
+            }
         }
-        
     }
+
+    public void backToNormal ()
+    {
+        stateNear = false;
+        uiZoom.SetActive(false);
+        stopcam = false;
+    }
+
+
+
+
+
 
     void FixedUpdate()
     {
-        // camera suiveuse
-        if (target == null) return;
+
+
+        if (target)
         {
-        
             Vector3 targetPosition = target.position + offset;
             if (stateNear) GetComponent<Camera>().orthographicSize = distanceNear;
             else GetComponent<Camera>().orthographicSize = distance;
 
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+            if (stopcam == false) transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
 
 

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,8 +18,6 @@ public class Inventory : MonoBehaviour
     public Image dragIcon;
 
     public float pickupRange = 3f;
-    //public Material highlightMaterial;
-    //private Material originalMaterial;
     private Renderer lookedAtRenderer = null;
 
     private List<Slot> inventorySlots = new List<Slot>();
@@ -42,10 +38,14 @@ public class Inventory : MonoBehaviour
         allslots.AddRange(hotbarSlots);
     }
 
+    private void Start()
+    {
+        container.SetActive(!container.activeInHierarchy);
+    }
 
     // test ajouter 
     // METTRE SCIPT GRAB ICI
-     void Update()
+    void Update()
     {
         
             if (Input.GetMouseButtonDown(0))
