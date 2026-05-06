@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c0b327fa9e054214586e92e0d913a90b
+guid: b90504307239f1147bb66db4608f3494
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3517020126675558057
-    second: ANIM MARCHE0009_0
+      213: -1792481253620314450
+    second: sautAnim0001_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ANIM MARCHE0009_0
+      name: sautAnim0001_0
       rect:
         serializedVersion: 2
-        x: 863
+        x: 505
         y: 379
-        width: 283
-        height: 445
+        width: 296
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 751aa9924d8013fc0800000000000000
-      internalID: -3517020126675558057
+      spriteID: eae0a6bfbc3df17e0800000000000000
+      internalID: -1792481253620314450
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ANIM MARCHE0009_0: -3517020126675558057
+      sautAnim0001_0: -1792481253620314450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

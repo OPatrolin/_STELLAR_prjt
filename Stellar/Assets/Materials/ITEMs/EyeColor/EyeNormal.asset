@@ -17,5 +17,5 @@ MonoBehaviour:
   maxStackSize: 1
   itemPrefab: {fileID: 0}
   handitemPrefab: {fileID: 0}
-  isEye: 0
+  isEye: 1
   visionType: 0

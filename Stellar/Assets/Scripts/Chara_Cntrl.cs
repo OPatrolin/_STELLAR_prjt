@@ -19,7 +19,8 @@ public class Chara_Cntrl : MonoBehaviour
     [Header("Anim")]
     public Animator Marche;
     private string Walk = "Marche";
-    
+    private string Saut = "Saut";
+
 
 
     Rigidbody2D rb;
@@ -76,6 +77,20 @@ public class Chara_Cntrl : MonoBehaviour
             SmokeFX.Play();
         }
 
+
+       
+        if (Input.GetButtonDown("Jump"))
+        {
+            Marche.SetBool(Saut, true);
+        }
+        else
+        {
+            Marche.SetBool(Saut, false);
+        }
+
+
+     
+
         //GetComponent<UI_Follow>().enabled = false;  ////////
 
     }
@@ -94,7 +109,7 @@ public class Chara_Cntrl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //contact NPC
-       // Debug.Log(col.gameObject.name);
+      
 
         if (col.gameObject.tag == "placement")
         {
