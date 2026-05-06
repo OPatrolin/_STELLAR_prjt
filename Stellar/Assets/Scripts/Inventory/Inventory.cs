@@ -34,8 +34,8 @@ public class Inventory : MonoBehaviour
         inventorySlots.AddRange(inventorySlotParent.GetComponentsInChildren<Slot>());
         hotbarSlots.AddRange(hotbarObj.GetComponentsInChildren<Slot>());
 
-        allslots.AddRange(inventorySlots);
         allslots.AddRange(hotbarSlots);
+        allslots.AddRange(inventorySlots);
     }
 
     private void Start()
@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour
                     //detecte toucher avec objet ITEM (good)
                     if (hit.collider.gameObject.GetComponent<Item>() != null)
                     {
-                        //Debug.Log("TYTYTYTYTYT");
+                       
                         Item myItem = hit.collider.gameObject.GetComponent<Item>();
                         AddItem(myItem.item,myItem.amount);
 
@@ -133,14 +133,16 @@ public class Inventory : MonoBehaviour
         {
            
             Slot hovered = GetHoveredSlot();
-            Debug.Log(hovered);
+           
 
             if (hovered != null && hovered.HasItem())
             {
                 itemS0 item = hovered.GetItem();
+             
+
                 if (item.isEye && hotbarSlots.Contains(hovered))
                 {
-                    VisionM.Instance.ApplyVision(item.visionType);
+                    VisionM.Instance.ApplyVision(item.visionType, item, hovered, this);
                 }
 
                 draggedSlot = hovered;

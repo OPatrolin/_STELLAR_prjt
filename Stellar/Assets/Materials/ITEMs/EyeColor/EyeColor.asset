@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::itemS0
   ItemName: Color Eye
   icon: {fileID: 0}
-  maxStackSize: 0
+  maxStackSize: 1
   itemPrefab: {fileID: 0}
   handitemPrefab: {fileID: 0}
-  isEye: 0
-  visionType: 0
+  isEye: 1
+  visionType: 1

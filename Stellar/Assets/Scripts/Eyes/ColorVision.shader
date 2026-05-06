@@ -5,59 +5,55 @@ Shader "Custom/ColorVision"
         _MainTex ("Texture", 2D) = "white" {}
         _ShiftEnabled ("Shift Enabled", Float) = 0
     }
+
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        ZWrite Off ZTest Always Cull Off
+
         Pass
         {
-            HLSLPROGRAM
+            CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "UnityCG.cginc"
 
-            struct Attributes
+            struct appdata
             {
-                float4 positionOS : POSITION;
+                float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct Varyings
+            struct v2f
             {
-                float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
             };
 
-            TEXTURE2D(_MainTex);
-            SAMPLER(sampler_MainTex);
+            sampler2D _MainTex;
             float _ShiftEnabled;
 
-            Varyings vert(Attributes IN)
+            v2f vert(appdata v)
             {
-                Varyings OUT;
-                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
-                OUT.uv = IN.uv;
-                return OUT;
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                return o;
             }
 
-            float3 ShiftColor(float3 col)
+            float3 ShiftColor(float3 c)
             {
-                float r = col.r;
-                float g = col.g;
-                float b = col.b;
+                return float3(1.0 - c.r, 1.0 - c.g, 1.0 - c.b);
+            } 
 
-                // vert -> rouge, rouge -> vert
-                // bleu -> orange (rouge+vert), jaune -> violet (rouge+bleu)
-                return float3(g, r, 1.0 - b);
-            }
 
-            half4 frag(Varyings IN) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
-                half4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
-                if (_ShiftEnabled > 0.5)
-                    col.rgb = ShiftColor(col.rgb);
-                return col;
+              fixed4 col = tex2D(_MainTex, i.uv);
+                 if (_ShiftEnabled > 0.5)
+                 col.rgb = ShiftColor(col.rgb);
+                 return col;
             }
-            ENDHLSL
+            ENDCG
         }
     }
 }

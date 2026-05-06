@@ -16,6 +16,11 @@ public class Chara_Cntrl : MonoBehaviour
     //[SerializeField] float holdTime = 50f;
     public ParticleSystem SmokeFX;
 
+    [Header("Anim")]
+    public Animator Marche;
+    private string Walk = "Marche";
+    
+
 
     Rigidbody2D rb;
     float inputX;
@@ -27,21 +32,42 @@ public class Chara_Cntrl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-  /*  public void Jump() //InputAction.CallbackContext context ??
-    {
-        //animation jump ici
-        SmokeFX.Play();
+    /*  public void Jump() //InputAction.CallbackContext context ??
+      {
+          //animation jump ici
+          SmokeFX.Play();
+      }
+    */
+     void Start()
+     {
+        Marche = GetComponent<Animator>();
 
-    }
-  */
+     }
 
 
-
-//deplacement g & d + saut
+    //deplacement g & d + saut
     void Update()
     {
         
         inputX = Input.GetAxisRaw("Horizontal");
+        if (inputX != 0)
+        {
+            Marche.SetBool(Walk, true);
+        }
+        else
+        {
+            Marche.SetBool(Walk, false);
+        }
+
+        if (inputX > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (inputX < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
 
         bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
         if (Input.GetButtonDown("Jump") && isGrounded)
