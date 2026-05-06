@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public GameObject hotbarObj;
     public GameObject inventorySlotParent;
     public GameObject container;
-
+    
 
     public Image dragIcon;
 
@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
 
     private List<Slot> inventorySlots = new List<Slot>();
     private List<Slot> hotbarSlots = new List<Slot>();
-    private List<Slot> allslots = new List<Slot>();
+    public List<Slot> allslots = new List<Slot>();
 
     private Slot draggedSlot = null;
     private bool isDragging = false;
@@ -43,8 +43,7 @@ public class Inventory : MonoBehaviour
         container.SetActive(!container.activeInHierarchy);
     }
 
-    // test ajouter 
-    // METTRE SCIPT GRAB ICI
+  
     void Update()
     {
         
@@ -138,6 +137,12 @@ public class Inventory : MonoBehaviour
 
             if (hovered != null && hovered.HasItem())
             {
+                itemS0 item = hovered.GetItem();
+                if (item.isEye && hotbarSlots.Contains(hovered))
+                {
+                    VisionM.Instance.ApplyVision(item.visionType);
+                }
+
                 draggedSlot = hovered;
                 isDragging = true;
 
@@ -158,7 +163,7 @@ public class Inventory : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0) && isDragging)
         {
-            Debug.Log("TEST");
+           
             Slot hoverd = GetHoveredSlot();
 
             if (hoverd != null)
@@ -181,8 +186,8 @@ public class Inventory : MonoBehaviour
 
             if (s.hovering)
             { 
-            return s;
-             }
+                return s;
+            }
         }
 
         return null;

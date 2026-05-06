@@ -32,7 +32,7 @@ public class CamCam2D : MonoBehaviour
         // zoom objet
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("ici ça marche");
+          
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
          
             if (hit)

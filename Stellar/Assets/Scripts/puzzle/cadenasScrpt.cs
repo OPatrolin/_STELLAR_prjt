@@ -2,58 +2,44 @@ using UnityEngine;
 
 public class cadenasScrpt : MonoBehaviour
 {
-    // si on touche le cadenas avec clef dans l'inventaire avec un nom precis gameobjt meme nom (cadenas 1 et clef 1) clef et cadenas disparaissent
-    // ou faire un script pour chaque cadenas ?
-    // collider cadenas
 
-    public Inventory allslots;
-    public Inventory GetItem;
-    public itemS0 item;
-    public CamCam2D stateNear; 
-    // public CamCam2D cam;
+    public Inventory myInventory;
+    public string requiredKeyName = "clef1"; 
 
-
-    private void Update()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        
-        
-
-
-
-
-
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-
-
-
-        if (stateNear == true &&  collision.gameObject.tag == "player")  //script sur le cadenas, il detecte le joueur
+        if (col.gameObject.tag == "Player" )
         {
-            // va chercher si il y a une clef dans l'inventaire if= destroy les 2 else do nothing
+            if (HasRequiredKey())
+            {   
+                RemoveKey();             
+                gameObject.SetActive(false); 
+            }
         }
-           
-
-
     }
 
+    bool HasRequiredKey()
+    {
+        foreach (Slot slot in myInventory.allslots)
+        {
+            if (slot.HasItem() && slot.GetItem().ItemName == requiredKeyName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    void RemoveKey()
+    {
+        foreach (Slot slot in myInventory.allslots)
+        {
+            if (slot.HasItem() && slot.GetItem().ItemName == requiredKeyName)
+            {
+                slot.RemoveAmount(1); // Retire 1 clef (gère le stack automatiquement)
+                break;
+            }
+        }
+    }
 
 }
