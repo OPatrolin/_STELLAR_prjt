@@ -83,10 +83,7 @@ public class Chara_Cntrl : MonoBehaviour
         {
             Marche.SetBool(Saut, true);
         }
-        else
-        {
-            Marche.SetBool(Saut, false);
-        }
+        
 
 
      
