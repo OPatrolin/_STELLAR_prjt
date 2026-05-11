@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Inventory : MonoBehaviour
@@ -29,13 +30,31 @@ public class Inventory : MonoBehaviour
 
 
     // Canva inventaire
-     void Awake()
+    void Awake()
     {
+        PersistCanvas[] canvases = FindObjectsByType<PersistCanvas>(FindObjectsSortMode.None);
+        if (canvases.Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+        // Met à jour la caméra à chaque changement de scène
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         inventorySlots.AddRange(inventorySlotParent.GetComponentsInChildren<Slot>());
         hotbarSlots.AddRange(hotbarObj.GetComponentsInChildren<Slot>());
-
         allslots.AddRange(hotbarSlots);
         allslots.AddRange(inventorySlots);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Récupère la nouvelle caméra de la scène chargée
+        cam = Camera.main;
+        Debug.Log($"Caméra mise à jour : {cam?.gameObject.name}");
     }
 
     private void Start()
@@ -46,6 +65,7 @@ public class Inventory : MonoBehaviour
   
     void Update()
     {
+
         
             if (Input.GetMouseButtonDown(0))
             {
@@ -127,18 +147,14 @@ public class Inventory : MonoBehaviour
 
     // deplacer les item (debut)
     private void StartDrag()
-    {
-        
+    { 
         if (Input.GetMouseButtonDown(0))
         {
-           
             Slot hovered = GetHoveredSlot();
-           
 
             if (hovered != null && hovered.HasItem())
             {
                 itemS0 item = hovered.GetItem();
-             
 
                 if (item.isEye && hotbarSlots.Contains(hovered))
                 {

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b296b6d20ed734c8a2414f6c614baf, type: 3}
+  m_Name: clef_coul
+  m_EditorClassIdentifier: Assembly-CSharp::itemS0
+  ItemName: clef_coul
+  icon: {fileID: -3383842491430776304, guid: ad6b99f3f4aadf7428127dc228e4c035, type: 3}
+  maxStackSize: 1
+  itemPrefab: {fileID: 1984736383267592697, guid: 1c15f269eacb7a648afe6649b5625653, type: 3}
+  handitemPrefab: {fileID: 0}
+  isEye: 0
+  visionType: 0

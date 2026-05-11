@@ -1,43 +1,68 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
 public class Placement : MonoBehaviour
 {
-    public int placementIndex;
-    public BilleScript currentBille;
-    public BilleScript billeSelectionnee;
+   // public int placementIndex;
+    //public BilleScript currentBille;
+    //public BilleScript billeSelectionnee;
 
-    public bool IsEmpty => currentBille == null;
+  
 
+    [Header("État de l'emplacement")]
+    [SerializeField] private bool isEmpty = true;
+    [SerializeField] private GameObject currentMarble = null;
 
-     void Update()
-     {
+    // Tag à assigner à tes billes dans Unity
+    [SerializeField] private string marbleTag = "Marble";
 
-        if (Input.GetMouseButtonDown(0) && IsEmpty)
-        {
-           // Debug.Log("IcI c'est le caca");
- 
-        }
-     }
+    public bool IsEmpty => isEmpty;
+    public GameObject CurrentMarble => currentMarble;
 
-    void OnTriggerStay2D(Collider2D other)
+    public void ForcerOccupe(GameObject bille)
     {
-        BilleScript bille = other.GetComponent<BilleScript>();
-        if (bille != null)
+        isEmpty = false;
+        currentMarble = bille;
+    }
+
+    public void ForcerVide()
+    {
+        isEmpty = true;
+        currentMarble = null;
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(marbleTag))
         {
-            currentBille = bille;
-            bille.currentPlacement = this;
-            Debug.Log("Placement " + placementIndex + " contient : " + other.gameObject.name);
+            isEmpty = false;
+            currentMarble = other.gameObject;
+            OnMarbleEntered(other.gameObject);
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        BilleScript bille = other.GetComponent<BilleScript>();
-        if (bille != null && currentBille == bille)
+        if (other.CompareTag(marbleTag))
         {
-            currentBille = null;
-            Debug.Log("Placement " + placementIndex + " est vide");
+            isEmpty = true;
+            currentMarble = null;
+            OnMarbleExited(other.gameObject);
         }
+    }
+
+    // Appelé quand une bille arrive — override ou abonne-toi via l'inspector
+    protected virtual void OnMarbleEntered(GameObject marble)
+    {
+        Debug.Log($"[{gameObject.name}] Bille arrivée : {marble.name} → IsEmpty = {isEmpty}");
+    }
+
+    // Appelé quand une bille part
+    protected virtual void OnMarbleExited(GameObject marble)
+    {
+        Debug.Log($"[{gameObject.name}] Bille partie : {marble.name} → IsEmpty = {isEmpty}");
     }
 }
+

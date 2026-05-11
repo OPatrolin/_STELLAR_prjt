@@ -22,7 +22,7 @@ public class active_UI : MonoBehaviour
 
         }
     }
-
+/*
     void OnTriggerExit2D(Collider2D col)
     {
         //s'eloigner NPC désacitivé
@@ -32,6 +32,7 @@ public class active_UI : MonoBehaviour
 
         }
     }
+*/
 }
 
 // PK CA NE MARCHE PLUS, UI SUPPRIME ?
