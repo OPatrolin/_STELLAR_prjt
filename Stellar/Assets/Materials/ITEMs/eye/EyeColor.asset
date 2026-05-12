@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EyeColor
   m_EditorClassIdentifier: Assembly-CSharp::itemS0
   ItemName: Color Eye
-  icon: {fileID: 0}
+  icon: {fileID: 8384662236515966437, guid: 9cca4a63f49b96744af4a7c441d1c87f, type: 3}
   maxStackSize: 1
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 4052291947169335353, guid: acd84ab348bc2494789f66ce7cf9ba8a, type: 3}
   handitemPrefab: {fileID: 0}
   isEye: 1
   visionType: 1

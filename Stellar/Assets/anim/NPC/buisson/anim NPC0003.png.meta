@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2377613dd61fb244ba247079212dbbce
+guid: c74527dda527e1c449ca391ec9053b4c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2047989221067452836
-    second: coul_0
+      213: -2037225355763644468
+    second: anim NPC0003_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coul_0
+      name: anim NPC0003_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
-        height: 100
+        x: 750
+        y: 209
+        width: 455
+        height: 306
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a1fd89885beb6c10800000000000000
-      internalID: 2047989221067452836
+      spriteID: cc70a4625525ab3e0800000000000000
+      internalID: -2037225355763644468
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      coul_0: 2047989221067452836
+      anim NPC0003_0: -2037225355763644468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
