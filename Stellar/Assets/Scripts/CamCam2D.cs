@@ -5,7 +5,6 @@ public class CamCam2D : MonoBehaviour
 {
     public Camera cam;
 
- 
     public Transform target;
     public float smoothTime = 0.2f;
     public Vector3 offset = new Vector3(0f, 0f, 0f);
@@ -22,7 +21,9 @@ public class CamCam2D : MonoBehaviour
 
     private void Start()
     {
-        uiZoom.SetActive(false);
+        stateNear = false;
+        stopcam = false;
+        uiZoom.SetActive(false); // toujours caché au démarrage
     }
 
     private void Update()
@@ -51,16 +52,14 @@ public class CamCam2D : MonoBehaviour
         }
     }
 
-    public void backToNormal ()
+    public void backToNormal()
     {
+        Debug.Log("backToNormal appelé, uiZoom = " + uiZoom);
         stateNear = false;
-        uiZoom.SetActive(false);
+        if (uiZoom != null)
+            uiZoom.SetActive(false);
         stopcam = false;
     }
-
-
-
-
 
 
     void FixedUpdate()

@@ -9,10 +9,10 @@ public class ouverturePuzzleRond : MonoBehaviour
 
     private void OnMouseDown()
     {
+       
         if (stateNear)
         {
-
-            SceneManager.LoadScene("Puzzle color");
+            NavigationManager.AllerVers("Puzzle color");
         }
     }
 }
@@ -24,5 +24,11 @@ public class ouverturePuzzleRond : MonoBehaviour
 
 
 
+/*
+ * if (stateNear)
+        {
 
+            NavigationManager.AllerVers("Puzzle color");
+        }
+*/
 

@@ -52,9 +52,14 @@ public class Inventory : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Récupère la nouvelle caméra de la scène chargée
         cam = Camera.main;
         Debug.Log($"Caméra mise à jour : {cam?.gameObject.name}");
+
+        GameObject backButton = GameObject.Find("back button puzzle");
+        if (backButton != null)
+            backButton.SetActive(scene.name == "Puzzle color");
+
+        // RETIRE le bloc GameScene d'ici
     }
 
     private void Start()
