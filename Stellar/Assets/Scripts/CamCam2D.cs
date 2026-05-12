@@ -49,6 +49,27 @@ public class CamCam2D : MonoBehaviour
                     }
                 }
             }
+
+
+            if (hit)
+            {
+                if (hit.collider.gameObject.GetComponent<NPCsett>() != null)
+                {
+                    stateNear = true;
+
+                    if (stateNear == true)
+                    {
+                        uiZoom.SetActive(true);
+                        stopcam = true;
+                    }
+                }
+            }
+
+
+
+
+
+
         }
     }
 
