@@ -4,84 +4,69 @@ using UnityEngine;
 public class CamCam2D : MonoBehaviour
 {
     public Camera cam;
-
     public Transform target;
     public float smoothTime = 0.2f;
     public Vector3 offset = new Vector3(0f, 0f, 0f);
-
     public float distance = 5f;
     public float distanceNear = 2f;
     Vector3 velocity = Vector3.zero;
-
     bool stateNear = false;
     bool stopcam = false;
 
-    // UI
     public GameObject uiZoom;
 
     private void Start()
     {
         stateNear = false;
         stopcam = false;
-        uiZoom.SetActive(false); // toujours caché au démarrage
+        uiZoom.SetActive(false);
     }
 
     private void Update()
     {
-        //(meme pour interaction npc)
-
-        // zoom objet
         if (Input.GetMouseButtonDown(0))
         {
-          
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero);
-         
-            if (hit)
-            {
-                if (hit.collider.gameObject.GetComponent<Meuble>() != null)
-                { 
-                    stateNear = true;
+            RaycastHit2D hit = Physics2D.Raycast(
+                new Vector2(
+                    cam.ScreenToWorldPoint(Input.mousePosition).x,
+                    cam.ScreenToWorldPoint(Input.mousePosition).y
+                ),
+                Vector2.zero
+            );
 
-                    if (stateNear == true)
-                    {
-                        uiZoom.SetActive(true);
-                        stopcam = true;
-                    }
-                }
+            // Zoom meuble
+            if (hit && hit.collider.gameObject.GetComponent<Meuble>() != null)
+            {
+                stateNear = true;
+                uiZoom.SetActive(true);
+                stopcam = true;
             }
 
-
+            // Dialogue NPC
             if (hit)
             {
-                if (hit.collider.gameObject.GetComponent<NPCsett>() != null)
+                NPCDialogue npc = hit.collider.gameObject.GetComponent<NPCDialogue>();
+                if (npc == null)
+                    npc = hit.collider.gameObject.GetComponentInChildren<NPCDialogue>();
+
+                if (npc != null)
                 {
                     stateNear = true;
-
-                    if (stateNear == true)
-                    {
-                        uiZoom.SetActive(true);
-                        stopcam = true;
-                    }
+                    uiZoom.SetActive(true);
+                    stopcam = true;
+                    npc.StartDialogue();
                 }
             }
-
-
-
-
-
-
         }
     }
 
     public void backToNormal()
     {
-        Debug.Log("backToNormal appelé, uiZoom = " + uiZoom);
         stateNear = false;
         if (uiZoom != null)
             uiZoom.SetActive(false);
         stopcam = false;
     }
-
 
     void FixedUpdate()
     {
@@ -90,13 +75,8 @@ public class CamCam2D : MonoBehaviour
             Vector3 targetPosition = target.position + offset;
             if (stateNear) GetComponent<Camera>().orthographicSize = distanceNear;
             else GetComponent<Camera>().orthographicSize = distance;
-
-            if (stopcam == false) transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+            if (!stopcam)
+                transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
-        // FEATURE le player ne bouge plus non plus
-
-
-
     }
-
-} 
+}
