@@ -9,8 +9,9 @@ public class CamCam2D : MonoBehaviour
     public Vector3 offset = new Vector3(0f, 0f, 0f);
     public float distance = 5f;
     public float distanceNear = 2f;
+    public Vector2 offsetNear = new Vector2(0f, 0f);
     Vector3 velocity = Vector3.zero;
-    bool stateNear = false;
+    public bool stateNear = false;
     bool stopcam = false;
 
     public GameObject uiZoom;
@@ -73,10 +74,21 @@ public class CamCam2D : MonoBehaviour
         if (target)
         {
             Vector3 targetPosition = target.position + offset;
-            if (stateNear) GetComponent<Camera>().orthographicSize = distanceNear;
-            else GetComponent<Camera>().orthographicSize = distance;
-            if (!stopcam)
-                transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+            if (stateNear)
+            {
+                GetComponent<Camera>().orthographicSize = distanceNear;
+                transform.position = new Vector3(
+                    target.position.x + offsetNear.x,
+                    target.position.y + offsetNear.y,
+                    transform.position.z
+                );
+            }
+            else
+            {
+                GetComponent<Camera>().orthographicSize = distance;
+                if (!stopcam)
+                    transform.position = Vector3.SmoothDamp(transform.position, target.position + offset, ref velocity, smoothTime);
+            }
         }
     }
 }

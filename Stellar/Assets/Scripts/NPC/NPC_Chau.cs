@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class NPC_Chau : NPCDialogue
 {
-    /*
-    protected override string[] GetLines()
+    public override string[] GetLines()
     {
         return new string[]
         {
@@ -11,5 +10,5 @@ public class NPC_Chau : NPCDialogue
             "Take the time to listen to yourself, to introspect and don’t forget to breathe."
         };
     }
-    */
+    
 }

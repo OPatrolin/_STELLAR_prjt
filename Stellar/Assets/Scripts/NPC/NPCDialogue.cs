@@ -4,6 +4,7 @@ using System.Collections;
 
 public class NPCDialogue : MonoBehaviour
 {
+    
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
     public float typingSpeed = 0.04f;
@@ -44,6 +45,14 @@ public class NPCDialogue : MonoBehaviour
 
     void Update()
     {
+        // Ferme le dialogue si la caméra n'est plus en stateNear
+        CamCam2D cam = FindObjectOfType<CamCam2D>();
+        if (cam != null && !cam.stateNear && dialoguePanel.activeSelf)
+        {
+            Close();
+            return;
+        }
+
         if (!dialoguePanel.activeSelf) return;
 
         if (Input.GetMouseButtonDown(0))
