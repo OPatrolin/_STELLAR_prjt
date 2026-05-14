@@ -14,10 +14,14 @@ public class CadenasManager : MonoBehaviour
     // La solution : index 0,1,2,3 dans chaque case (= symbole 1,2,3,4)
     private int[] solution = { 0, 1, 2, 3 };
 
+    [Header("Récompense")]
+    public GameObject objetRecompense;
+
     void Awake()
     {
         instance = this;
         coffreOuvert.SetActive(false);
+        objetRecompense.SetActive(false); // caché au départ
     }
 
     public void VerifierCode()
@@ -25,12 +29,12 @@ public class CadenasManager : MonoBehaviour
         for (int i = 0; i < cases.Length; i++)
         {
             if (cases[i].GetIndex() != solution[i])
-                return; // pas bon, on sort
+                return;
         }
 
         // Bonne combinaison !
-        Debug.Log("Cadenas ouvert !");
         coffreFerme.SetActive(false);
         coffreOuvert.SetActive(true);
+        objetRecompense.SetActive(true); // apparaît !
     }
 }

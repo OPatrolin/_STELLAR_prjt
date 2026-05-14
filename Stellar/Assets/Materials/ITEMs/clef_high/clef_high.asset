@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b296b6d20ed734c8a2414f6c614baf, type: 3}
+  m_Name: clef_high
+  m_EditorClassIdentifier: Assembly-CSharp::itemS0
+  ItemName: clef high
+  icon: {fileID: -2430323926356158818, guid: c76a64c4885d0384d81b3ad2909ca99e, type: 3}
+  maxStackSize: 1
+  itemPrefab: {fileID: 2197108042761310464, guid: 8ade21e56f4a12d49b299d358984bd19, type: 3}
+  handitemPrefab: {fileID: 0}
+  isEye: 0
+  visionType: 0

@@ -15,6 +15,15 @@ public class CaseCode : MonoBehaviour
         // sr.sprite = symboles[0]; 
     }
 
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+
+        // Démarre sur un symbole aléatoire
+        indexActuel = Random.Range(0, symboles.Length);
+        sr.sprite = symboles[indexActuel];
+    }
+
     void OnMouseDown()
     {
         indexActuel = (indexActuel + 1) % symboles.Length;

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class ouverturePuzzleHigh : MonoBehaviour
 {
     public CamCam2D stateNear;
-    public Scene Puzzle_color;
+    public Scene PuzzleHigh;
 
 
     private void OnMouseDown()
