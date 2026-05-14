@@ -46,6 +46,7 @@ public class CamCam2D : MonoBehaviour
             // Dialogue NPC
             if (hit)
             {
+                Debug.Log("Raycast touche: " + hit.collider.gameObject.name);
                 NPCDialogue npc = hit.collider.gameObject.GetComponent<NPCDialogue>();
                 if (npc == null)
                     npc = hit.collider.gameObject.GetComponentInChildren<NPCDialogue>();

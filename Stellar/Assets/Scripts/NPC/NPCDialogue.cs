@@ -45,16 +45,15 @@ public class NPCDialogue : MonoBehaviour
 
     void Update()
     {
-        // Ferme le dialogue si la caméra n'est plus en stateNear
+        if (dialoguePanel == null) return; // ajout
+
         CamCam2D cam = FindObjectOfType<CamCam2D>();
         if (cam != null && !cam.stateNear && dialoguePanel.activeSelf)
         {
             Close();
             return;
         }
-
         if (!dialoguePanel.activeSelf) return;
-
         if (Input.GetMouseButtonDown(0))
         {
             if (isTyping)
@@ -76,7 +75,8 @@ public class NPCDialogue : MonoBehaviour
 
     void Close()
     {
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null) // ajout
+            dialoguePanel.SetActive(false);
         FindObjectOfType<CamCam2D>()?.backToNormal();
     }
 }

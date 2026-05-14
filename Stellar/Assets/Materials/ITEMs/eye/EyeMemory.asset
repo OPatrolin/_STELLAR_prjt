@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::itemS0
   ItemName: eye memory
   icon: {fileID: 5896655297601619488, guid: deac22eabfb658244855095a0780b7b8, type: 3}
-  maxStackSize: 0
+  maxStackSize: 1
   itemPrefab: {fileID: 495360347827592069, guid: 9a4346219a448054ca26e42aca4524ab, type: 3}
   handitemPrefab: {fileID: 0}
   isEye: 0
