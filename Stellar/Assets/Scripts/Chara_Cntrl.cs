@@ -33,17 +33,17 @@ public class Chara_Cntrl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    /*  public void Jump() //InputAction.CallbackContext context ??
-      {
-          //animation jump ici
-          SmokeFX.Play();
-      }
-    */
-     void Start()
-     {
+    void Start()
+    {
         Marche = GetComponent<Animator>();
 
-     }
+        // Restaure la position si on revient d'une scène puzzle
+        if (NavigationManager.PlayerPosition.HasValue)
+        {
+            transform.position = NavigationManager.PlayerPosition.Value;
+            NavigationManager.EffacerPosition();
+        }
+    }
 
 
     //deplacement g & d + saut

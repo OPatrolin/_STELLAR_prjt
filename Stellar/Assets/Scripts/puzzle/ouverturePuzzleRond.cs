@@ -21,14 +21,3 @@ public class ouverturePuzzleRond : MonoBehaviour
 
 
 
-
-
-
-/*
- * if (stateNear)
-        {
-
-            NavigationManager.AllerVers("Puzzle color");
-        }
-*/
-
