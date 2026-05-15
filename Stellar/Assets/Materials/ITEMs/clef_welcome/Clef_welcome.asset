@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27b296b6d20ed734c8a2414f6c614baf, type: 3}
-  m_Name: clef_high
+  m_Name: Clef_welcome
   m_EditorClassIdentifier: Assembly-CSharp::itemS0
-  ItemName: clef_high_ingame
-  icon: {fileID: -2430323926356158818, guid: c76a64c4885d0384d81b3ad2909ca99e, type: 3}
+  ItemName: Clef_welcome
+  icon: {fileID: -6703610546610804601, guid: d6a0193649abf4242ad24256777970d6, type: 3}
   maxStackSize: 1
-  itemPrefab: {fileID: 2197108042761310464, guid: 8ade21e56f4a12d49b299d358984bd19, type: 3}
+  itemPrefab: {fileID: 3774245246013549010, guid: 2d1fa98144814824f925eeb1a83d2f59, type: 3}
   handitemPrefab: {fileID: 0}
   isEye: 0
   visionType: 0
