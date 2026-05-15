@@ -12,6 +12,7 @@ public class Chara_Cntrl : MonoBehaviour
 
     [Header("Gravity/Jump")]
     [SerializeField] float jumpForce = 5f;
+    [SerializeField] private float jumpRange;
     //[SerializeField] float gravity = -10f;
     //[SerializeField] float holdTime = 50f;
     public ParticleSystem SmokeFX;
@@ -70,25 +71,23 @@ public class Chara_Cntrl : MonoBehaviour
         }
 
 
-        bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
+        bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, jumpRange, groundLayer);
+        Marche.SetBool("Grounded", isGrounded);
         if (Input.GetButtonDown("Jump") && isGrounded)
+
         {
+            Debug.Log("caca");
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            Marche.SetBool(Saut, true);
             SmokeFX.Play();
         }
 
-
        
-        if (Input.GetButtonDown("Jump"))
-        {
-            Marche.SetBool(Saut, true);
-        }
+      
         
 
 
-     
-
-        //GetComponent<UI_Follow>().enabled = false;  ////////
 
     }
 
@@ -115,5 +114,11 @@ public class Chara_Cntrl : MonoBehaviour
 
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * jumpRange);
     }
 }

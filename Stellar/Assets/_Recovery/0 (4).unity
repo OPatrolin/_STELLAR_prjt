@@ -11592,10 +11592,6 @@ PrefabInstance:
       propertyPath: SmokeFX
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3410856789812567842, guid: 38a5203084af63641b9307ae4e49a858, type: 3}
-      propertyPath: jumpRange
-      value: 1.98
-      objectReference: {fileID: 0}
     - target: {fileID: 3677080219900216364, guid: 38a5203084af63641b9307ae4e49a858, type: 3}
       propertyPath: m_Size.x
       value: 1.3610144
