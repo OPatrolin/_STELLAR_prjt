@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 271509d266094a04591b11e77c1b2b9e
+guid: c414c74a302423f4dbdc0ac1ff6756e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3974218759325650197
-    second: "papier_r\xE9solution_0"
+      213: 5361455387022484360
+    second: papier_0
   - first:
-      213: -6629956763109787939
-    second: "papier_r\xE9solution_1"
+      213: 1688799890521963189
+    second: papier_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "papier_r\xE9solution_0"
+      name: papier_0
       rect:
         serializedVersion: 2
         x: 458
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be273be381db8d8c0800000000000000
-      internalID: -3974218759325650197
+      spriteID: 883649ea447b76a40800000000000000
+      internalID: 5361455387022484360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "papier_r\xE9solution_1"
+      name: papier_1
       rect:
         serializedVersion: 2
         x: 563
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd674a27379adf3a0800000000000000
-      internalID: -6629956763109787939
+      spriteID: 5bab7438d82df6710800000000000000
+      internalID: 1688799890521963189
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "papier_r\xE9solution_0": -3974218759325650197
-      "papier_r\xE9solution_1": -6629956763109787939
+      papier_0: 5361455387022484360
+      papier_1: 1688799890521963189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
