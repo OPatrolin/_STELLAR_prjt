@@ -15,7 +15,7 @@ public class Chara_Cntrl : MonoBehaviour
     [SerializeField] private float jumpRange;
     //[SerializeField] float gravity = -10f;
     //[SerializeField] float holdTime = 50f;
-    public ParticleSystem SmokeFX;
+    //public ParticleSystem SmokeFX;
 
     [Header("Anim")]
     public Animator Marche;
@@ -80,7 +80,7 @@ public class Chara_Cntrl : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
             Marche.SetBool(Saut, true);
-            SmokeFX.Play();
+            //SmokeFX.Play();
         }
 
        

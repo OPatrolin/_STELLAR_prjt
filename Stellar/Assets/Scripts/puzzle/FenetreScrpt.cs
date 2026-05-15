@@ -33,14 +33,6 @@ public class FenetreScrpt : MonoBehaviour
                     inventory = all[0];
             }
 
-            if (inventory == null)
-            {
-                Debug.LogWarning("Inventory toujours introuvable !");
-                return;
-            }
-
-
-
             foreach (Slot slot in inventory.allslots)
             {
                 if (slot.HasItem())
