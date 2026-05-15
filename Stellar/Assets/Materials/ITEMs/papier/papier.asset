@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b296b6d20ed734c8a2414f6c614baf, type: 3}
   m_Name: papier
   m_EditorClassIdentifier: Assembly-CSharp::itemS0
+  isPaper: 1
   ItemName: papier
   icon: {fileID: 21300000, guid: c414c74a302423f4dbdc0ac1ff6756e1, type: 3}
   maxStackSize: 1

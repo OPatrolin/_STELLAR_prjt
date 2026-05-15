@@ -152,7 +152,7 @@ public class Inventory : MonoBehaviour
 
     // deplacer les item (debut)
     private void StartDrag()
-    { 
+    {
         if (Input.GetMouseButtonDown(0))
         {
             Slot hovered = GetHoveredSlot();
@@ -160,6 +160,13 @@ public class Inventory : MonoBehaviour
             if (hovered != null && hovered.HasItem())
             {
                 itemS0 item = hovered.GetItem();
+
+                // Affiche le papier en grand si c'est un paper en hotbar
+                if (item.isPaper && hotbarSlots.Contains(hovered))
+                {
+                    PaperViewer.Instance.Show(item.icon);
+                    return;
+                }
 
                 if (item.isEye && hotbarSlots.Contains(hovered))
                 {
@@ -169,7 +176,6 @@ public class Inventory : MonoBehaviour
                 draggedSlot = hovered;
                 isDragging = true;
 
-                // show drag item
                 dragIcon.sprite = hovered.GetItem().icon;
                 dragIcon.color = new Color(1, 1, 1, 0.5f);
                 dragIcon.enabled = true;

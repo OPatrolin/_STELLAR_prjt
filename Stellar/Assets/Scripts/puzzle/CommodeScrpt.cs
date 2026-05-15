@@ -82,15 +82,7 @@ public class CommodeScrpt : MonoBehaviour
         }
     }
 
+
 }
 
 
-
-/* 
- * clef 2 (dans l'autre tirroire) -> feuille avec résultat
- * (pouvoir ouvrir la feuille depuis l'inventaire ( comme si c'etait un meuble + bouton buck)
- */
-
-
-//public GameObject objetReward;    
-//objetReward.SetActive(true); // apparaît !

@@ -18,14 +18,6 @@ public class cadenasScrpt : MonoBehaviour
         if (all.Length > 0)
             inventory = all[0];
 
-        if (inventory == null)
-            Debug.LogWarning("Aucun Inventory trouvé !");
-        else
-            Debug.Log("Inventory trouvé : " + inventory.gameObject.name);
-
-       // isOpen = PlayerPrefs.GetInt(cadenasID, 0) == 1;
-        Debug.Log("Etat cadenas [" + cadenasID + "] : " + (isOpen ? "ouvert" : "fermé"));
-
         if (isOpen)
             gameObject.SetActive(false);
     }
@@ -51,7 +43,7 @@ public class cadenasScrpt : MonoBehaviour
                 return;
             }
 
-            Debug.Log("C'est le joueur ! Vérification de la clef...");
+        
 
             foreach (Slot slot in inventory.allslots)
             {
@@ -61,13 +53,9 @@ public class cadenasScrpt : MonoBehaviour
 
             if (HasRequiredKey())
             {
-                Debug.Log("Clef trouvée ! Ouverture...");
+               
                 RemoveKey();
                 OpenCadenas();
-            }
-            else
-            {
-                Debug.Log("Clef NON trouvée. Nom cherché : [" + requiredKeyName + "]");
             }
         }
     }
