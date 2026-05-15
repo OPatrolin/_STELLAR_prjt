@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27b296b6d20ed734c8a2414f6c614baf, type: 3}
-  m_Name: clef_C1
+  m_Name: papier
   m_EditorClassIdentifier: Assembly-CSharp::itemS0
-  ItemName: clef_C1
-  icon: {fileID: 994407639851923300, guid: 6f46ab28f7c2bf446b3a8d11c658b4e4, type: 3}
+  ItemName: papier
+  icon: {fileID: -3974218759325650197, guid: 271509d266094a04591b11e77c1b2b9e, type: 3}
   maxStackSize: 1
-  itemPrefab: {fileID: 2682979019383857388, guid: 885ba83232c2c48409a5051284e274cb, type: 3}
+  itemPrefab: {fileID: 7071009801380079126, guid: dd37f4f5e030ceb42958911f1d551a32, type: 3}
   handitemPrefab: {fileID: 0}
   isEye: 0
   visionType: 0

@@ -32,7 +32,7 @@ public class cadenasScrpt : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Trigger touché par : " + col.gameObject.name + " | Tag : " + col.gameObject.tag);
+        //Debug.Log("Trigger touché par : " + col.gameObject.name + " | Tag : " + col.gameObject.tag);
 
         if (isOpen) return;
 
